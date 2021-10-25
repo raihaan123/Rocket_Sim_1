@@ -34,27 +34,27 @@ A_para = (pi*D_para^2)/4; %Parachute area in m^2
 D_drogue = 0.4; %Parachute diameter in m
 A_drogue = (pi*D_drogue^2)/4; %Parachute area in m^2
 
-
-mdl = gcs;
-thrustValues = [4000];
-for i = 1:numel(thrustValues)
-    F = thrustValues(i);
-    m_dot = F/V_e; %Assume constant m_dot throughout flight (i.e. constant throttle setting)
-    results = sim(mdl);
-    
-    subplot(3,1,1);
-    plot(results.logsout.get("Velocity (ms^-^1)").Values)
-    hold on
-    subplot(3,1,2);
-    plot(results.logsout.get("Convective heat transfer rate (W/cm^2)").Values)
-    hold on
-    subplot(3,1,3);
-    plot(results.logsout.get("Ambient Pressure (kPa)").Values)
-    hold on
-    
-    %legendLabels{i} = "Thrust = " + num2str(F/1000) + "kN";
-    
-    disp("Simulation " + num2str(i) + " complete")
-end
-%legend(legendLabels)
-hold off
+% 
+% mdl = gcs;
+% thrustValues = [4000];
+% for i = 1:numel(thrustValues)
+%     F = thrustValues(i);
+%     m_dot = F/V_e; %Assume constant m_dot throughout flight (i.e. constant throttle setting)
+%     results = sim(mdl);
+%     
+%     subplot(3,1,1);
+%     plot(results.logsout.get("Velocity (ms^-^1)").Values)
+%     hold on
+%     subplot(3,1,2);
+%     plot(results.logsout.get("Convective heat transfer rate (W/cm^2)").Values)
+%     hold on
+%     subplot(3,1,3);
+%     plot(results.logsout.get("Ambient Pressure (kPa)").Values)
+%     hold on
+%     
+%     %legendLabels{i} = "Thrust = " + num2str(F/1000) + "kN";
+%     
+%     disp("Simulation " + num2str(i) + " complete")
+% end
+% %legend(legendLabels)
+% hold off
