@@ -9,14 +9,14 @@ m_dry = 50; %Dry mass of rocket in kg
 m_Propellant = 118; %Propellant mass of rocket in kg
 
 Isp = 200; %Specific impulse of the rocket in s - assume roughly 200 for amateur propulsion system
-Ve = g*Isp; %Work out exhaust velocity from Isp in m/s
+V_e = g*Isp; %Work out exhaust velocity from Isp in m/s
 
 F = 3500; %Thrust at liftoff in N
 
-m_dot = F/Ve; %Assume constant m_dot throughout flight (i.e. constant throttle setting)
+m_dot = F/V_e; %Assume constant m_dot throughout flight (i.e. constant throttle setting)
 
 De = 50; %Nozzle exit diameter in mm
-Ae = pi*(De/2000)^2; %Nozzle exit area (should be calculated from engine design)
+A_e = pi*(De/2000)^2; %Nozzle exit area (should be calculated from engine design)
 
 r_n = 0.001; %Nose radius of nosecone tip in m (I think)
 epsilon = 0.1; %Emissivity coefficient of the nosecone tip
@@ -37,7 +37,7 @@ mdl = gcs;
 thrustValues = [4000];
 for i = 1:numel(thrustValues)
     F = thrustValues(i);
-    m_dot = F/Ve; %Assume constant m_dot throughout flight (i.e. constant throttle setting)
+    m_dot = F/V_e; %Assume constant m_dot throughout flight (i.e. constant throttle setting)
     results = sim(mdl);
     
     subplot(3,1,1);
