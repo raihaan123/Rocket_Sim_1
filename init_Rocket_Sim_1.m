@@ -6,14 +6,16 @@ R = 287; %Gas constnat for air
 sigma = 5.6704e-8; %Stefan-boltzmann constant in W/m^2.K
 
 m_dry = 50; %Dry mass of rocket in kg
-m_Propellant = 118; %Propellant mass of rocket in kg
+m0_fuel = 59; %Fuel mass of rocket in kg
+m0_ox = 59; % Oxidizer mass of rocket in kg
 
 Isp = 200; %Specific impulse of the rocket in s - assume roughly 200 for amateur propulsion system
 V_e = g*Isp; %Work out exhaust velocity from Isp in m/s
 
 F = 3500; %Thrust at liftoff in N
 
-m_dot = F/V_e; %Assume constant m_dot throughout flight (i.e. constant throttle setting)
+m_f_dot = 0.5 * F/V_e; %Assume constant m_dot throughout flight (i.e. constant throttle setting)
+m_ox_dot = m_f_dot;
 
 De = 50; %Nozzle exit diameter in mm
 A_e = pi*(De/2000)^2; %Nozzle exit area (should be calculated from engine design)
